@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card p-4 shadow">
+        <h2 class="mb-3">Delete Contractor</h2>
+        <p>Are you sure you want to delete <strong>{{ contractor.name }}</strong>?</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'contractor_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
