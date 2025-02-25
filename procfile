@@ -1,1 +1,1 @@
-web: gunicorn buildsync.wsgi --log-file -
+web: gunicorn .buildsync.buildsync.wsgi --log-file -
