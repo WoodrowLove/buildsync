@@ -1,6 +1,6 @@
 from django.db import models
 from projects.models import Project
-from users.models import User
+from contractors.models import Contractor  # Import Contractor model
 
 class Task(models.Model):
     STATUS_CHOICES = (
@@ -12,7 +12,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tasks")
-    assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="tasks")
+    assigned_to = models.ForeignKey(Contractor, on_delete=models.SET_NULL, null=True, blank=True, related_name="tasks")  # Updated
     due_date = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 

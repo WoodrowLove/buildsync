@@ -10,6 +10,7 @@
             <tr>
                 <th>Title</th>
                 <th>Project</th>
+                <th>Assigned Contractor</th>  <!-- Updated -->
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ task.title }}</td>
                 <td>{{ task.project }}</td>
+                <td>{% if task.assigned_to %}{{ task.assigned_to.name }}{% else %}Unassigned{% endif %}</td>  <!-- Updated -->
                 <td>{{ task.get_status_display }}</td>
                 <td>{{ task.due_date }}</td>
                 <td>
@@ -30,7 +32,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5" class="text-center">No tasks available.</td>
+                <td colspan="6" class="text-center">No tasks available.</td>
             </tr>
             {% endfor %}
         </tbody>
